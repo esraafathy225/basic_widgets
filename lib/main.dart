@@ -46,7 +46,44 @@ class MyApp extends StatelessWidget {
                     ))
               ],
             ),
-            body: MyStack()));
+            body: MyDetector()));
+  }
+}
+
+class MyDetector extends StatelessWidget {
+  const MyDetector({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: (){print('Tapped');},
+      child: Center(
+        child: Container(
+          width: 300,
+          height: 300,
+          color: Colors.red,
+        ),
+      ),
+    );
+  }
+}
+
+
+class MyGridView extends StatelessWidget {
+  const MyGridView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+        itemCount: 64,
+        gridDelegate:
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 8),
+        itemBuilder: (context, index) {
+          return Container(
+            color: Colors.deepPurple,
+            margin: EdgeInsets.all(8),
+          );
+        });
   }
 }
 
@@ -228,7 +265,11 @@ class MyContainer extends StatelessWidget {
         height: 300,
         decoration: BoxDecoration(
             color: Colors.deepPurple, borderRadius: BorderRadius.circular(50)),
-        child: Icon(Icons.favorite,color: Colors.white,size: 64,),
+        child: Icon(
+          Icons.favorite,
+          color: Colors.white,
+          size: 64,
+        ),
       ),
     );
   }
